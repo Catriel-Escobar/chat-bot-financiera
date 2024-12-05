@@ -1,0 +1,18 @@
+package com.chatbot.chatbot.config;
+
+import org.springframework.ai.vectorstore.VectorStore;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class VectorStoreConfig {
+    @Bean
+    public VectorStore vectorStore(
+            PGVectorStore.Builder builder,
+            EmbeddingModel embeddingModel
+    ) {
+        return builder
+                .withEmbeddingModel(embeddingModel)
+                .build();
+    }
+}
